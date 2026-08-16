@@ -12,10 +12,10 @@ class LessonScreen extends StatelessWidget {
       // =====================================================
       // APP BAR
       // =====================================================
-
       appBar: AppBar(
         backgroundColor: const Color(0xFFFFF8FF),
         elevation: 0,
+        scrolledUnderElevation: 0,
 
         leading: IconButton(
           icon: const Icon(
@@ -23,7 +23,6 @@ class LessonScreen extends StatelessWidget {
             size: 22,
             color: Colors.black,
           ),
-
           onPressed: () {
             Navigator.pop(context);
           },
@@ -42,33 +41,23 @@ class LessonScreen extends StatelessWidget {
       // =====================================================
       // BODY
       // =====================================================
-
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-
-          padding: const EdgeInsets.symmetric(
-            horizontal: 26,
-            vertical: 20,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 20),
 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
-
               // =================================================
               // LESSON PROGRESS
               // =================================================
-
               Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
-
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
                     'Lesson 1',
-
                     style: TextStyle(
                       fontSize: 15,
                       color: Color(0xFF7252B5),
@@ -78,11 +67,7 @@ class LessonScreen extends StatelessWidget {
 
                   Text(
                     '1 of 5',
-
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
+                    style: TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                 ],
               ),
@@ -90,21 +75,13 @@ class LessonScreen extends StatelessWidget {
               const SizedBox(height: 10),
 
               ClipRRect(
-                borderRadius:
-                    BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(20),
 
                 child: const LinearProgressIndicator(
                   value: 0.2,
-
                   minHeight: 6,
-
-                  backgroundColor:
-                      Color(0xFFE7DDF7),
-
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(
-                    Color(0xFF7252B5),
-                  ),
+                  backgroundColor: Color(0xFFE7DDF7),
+                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF7252B5)),
                 ),
               ),
 
@@ -113,7 +90,6 @@ class LessonScreen extends StatelessWidget {
               // =================================================
               // LESSON ICON
               // =================================================
-
               Center(
                 child: Container(
                   width: 105,
@@ -121,16 +97,12 @@ class LessonScreen extends StatelessWidget {
 
                   decoration: BoxDecoration(
                     color: const Color(0xFFE8DDF7),
-
-                    borderRadius:
-                        BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(30),
                   ),
 
                   child: const Icon(
-                    Icons.account_balance_wallet_outlined,
-
+                    Icons.payments_outlined,
                     size: 55,
-
                     color: Color(0xFF7252B5),
                   ),
                 ),
@@ -141,10 +113,8 @@ class LessonScreen extends StatelessWidget {
               // =================================================
               // TITLE
               // =================================================
-
               const Text(
-                'What is a Budget?',
-
+                'What is Money?',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -157,11 +127,11 @@ class LessonScreen extends StatelessWidget {
               // =================================================
               // DESCRIPTION
               // =================================================
-
               const Text(
-                'A budget is a simple plan for your money. '
-                'It helps you decide how much money you can '
-                'spend, save, and keep for future needs.',
+                'Money is something people use to buy goods and '
+                'services, save for the future, and exchange value. '
+                'It makes everyday transactions easier than trading '
+                'one item directly for another.',
 
                 style: TextStyle(
                   fontSize: 17,
@@ -175,49 +145,31 @@ class LessonScreen extends StatelessWidget {
               // =================================================
               // EXAMPLE CARD
               // =================================================
-
               Container(
                 width: double.infinity,
-
-                padding:
-                    const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
 
                 decoration: BoxDecoration(
                   color: const Color(0xFFFFF7DF),
-
-                  borderRadius:
-                      BorderRadius.circular(20),
-
-                  border: Border.all(
-                    color: const Color(0xFFF1E3A8),
-                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: const Color(0xFFF1E3A8)),
                 ),
 
                 child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-
                     // ===========================================
                     // EXAMPLE TITLE
                     // ===========================================
-
                     const Row(
                       children: [
-                        Text(
-                          '💡',
-
-                          style: TextStyle(
-                            fontSize: 22,
-                          ),
-                        ),
+                        Text('💡', style: TextStyle(fontSize: 22)),
 
                         SizedBox(width: 8),
 
                         Text(
                           'Example',
-
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -229,61 +181,44 @@ class LessonScreen extends StatelessWidget {
                     const SizedBox(height: 12),
 
                     const Text(
-                      'Imagine you receive ₹1,000 pocket money.',
+                      'Imagine you have a notebook, but you want '
+                      'to buy a snack from a shop.',
 
-                      style: TextStyle(
-                        fontSize: 16,
-                        height: 1.4,
-                      ),
+                      style: TextStyle(fontSize: 16, height: 1.4),
                     ),
 
                     const SizedBox(height: 10),
 
                     const Text(
-                      'You could plan your money like this:',
+                      'Instead of finding someone who wants your '
+                      'notebook and has a snack to exchange, you '
+                      'can use money to buy the snack.',
 
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                      style: TextStyle(fontSize: 16, height: 1.4),
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
 
-                    // ===========================================
-                    // NEEDS
-                    // ===========================================
-
-                    _BudgetRow(
-                      title: 'Needs',
-                      amount: '₹500',
-                      icon:
-                          Icons.shopping_bag_outlined,
+                    _MoneyRow(
+                      title: 'Earn',
+                      description: 'Get money from work or other sources',
+                      icon: Icons.work_outline,
                     ),
 
                     const SizedBox(height: 8),
 
-                    // ===========================================
-                    // WANTS
-                    // ===========================================
-
-                    _BudgetRow(
-                      title: 'Wants',
-                      amount: '₹300',
-                      icon:
-                          Icons.movie_outlined,
+                    _MoneyRow(
+                      title: 'Spend',
+                      description: 'Use money to buy goods and services',
+                      icon: Icons.shopping_bag_outlined,
                     ),
 
                     const SizedBox(height: 8),
 
-                    // ===========================================
-                    // SAVINGS
-                    // ===========================================
-
-                    _BudgetRow(
-                      title: 'Savings',
-                      amount: '₹200',
-                      icon:
-                          Icons.savings_outlined,
+                    _MoneyRow(
+                      title: 'Save',
+                      description: 'Keep money for future needs and goals',
+                      icon: Icons.savings_outlined,
                     ),
                   ],
                 ),
@@ -292,63 +227,43 @@ class LessonScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               // =================================================
-              // WHY BUDGET?
+              // WHY DO WE NEED MONEY?
               // =================================================
-
               Container(
                 width: double.infinity,
-
-                padding:
-                    const EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
 
                 decoration: BoxDecoration(
                   color: Colors.white,
+                  borderRadius: BorderRadius.circular(18),
 
-                  borderRadius:
-                      BorderRadius.circular(18),
-
-                  border: Border.all(
-                    color:
-                        const Color(0xFFE2E2E2),
-                  ),
+                  border: Border.all(color: const Color(0xFFE2E2E2)),
                 ),
 
                 child: const Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-
                     Text(
-                      'Why is a budget useful?',
-
+                      'Why do we need money?',
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight:
-                            FontWeight.bold,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
 
                     SizedBox(height: 12),
 
-                    _BulletPoint(
-                      text:
-                          'Helps you control your spending',
-                    ),
+                    _BulletPoint(text: 'Money makes buying and selling easier'),
 
                     _BulletPoint(
-                      text:
-                          'Helps you save for your goals',
+                      text: 'Money gives us a common way to measure value',
                     ),
 
-                    _BulletPoint(
-                      text:
-                          'Helps you avoid unnecessary purchases',
-                    ),
+                    _BulletPoint(text: 'Money can be saved for future needs'),
 
                     _BulletPoint(
-                      text:
-                          'Helps you understand where your money goes',
+                      text: 'Money helps businesses and people exchange value',
                     ),
                   ],
                 ),
@@ -357,9 +272,68 @@ class LessonScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               // =================================================
+              // KEY IDEA CARD
+              // =================================================
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(18),
+
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF0EAFB),
+                  borderRadius: BorderRadius.circular(18),
+
+                  border: Border.all(color: const Color(0xFFDCCEF3)),
+                ),
+
+                child: const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    Icon(
+                      Icons.lightbulb_outline,
+                      color: Color(0xFF7252B5),
+                      size: 26,
+                    ),
+
+                    SizedBox(width: 12),
+
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                        children: [
+                          Text(
+                            'Key Idea',
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF7252B5),
+                            ),
+                          ),
+
+                          SizedBox(height: 6),
+
+                          Text(
+                            'Money is a tool. The important part is '
+                            'learning how to use that tool wisely.',
+                            style: TextStyle(
+                              fontSize: 15,
+                              height: 1.4,
+                              color: Color(0xFF444444),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 28),
+
+              // =================================================
               // START QUIZ BUTTON
               // =================================================
-
               SizedBox(
                 width: double.infinity,
                 height: 62,
@@ -370,40 +344,27 @@ class LessonScreen extends StatelessWidget {
                       context,
 
                       MaterialPageRoute(
-                        builder: (_) =>
-                            const QuizScreen(
-                              moduleId: 'l1m1',
-                              moduleTitle: 'What is a Budget?',
-                            ),
+                        builder: (_) => const QuizScreen(
+                          moduleId: 'l1m1',
+                          moduleTitle: 'What is Money?',
+                        ),
                       ),
                     );
                   },
 
-                  style:
-                      ElevatedButton.styleFrom(
-                    backgroundColor:
-                        const Color(0xFF7252B5),
-
-                    foregroundColor:
-                        Colors.white,
-
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF7252B5),
+                    foregroundColor: Colors.white,
                     elevation: 0,
 
-                    shape:
-                        RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(32),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
                     ),
                   ),
 
                   child: const Text(
                     'Start Quiz →',
-
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight:
-                          FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -418,72 +379,72 @@ class LessonScreen extends StatelessWidget {
 }
 
 // =============================================================
-// BUDGET ROW
+// MONEY ROW
 // =============================================================
 
-class _BudgetRow extends StatelessWidget {
+class _MoneyRow extends StatelessWidget {
   final String title;
-  final String amount;
+  final String description;
   final IconData icon;
 
-  const _BudgetRow({
+  const _MoneyRow({
     required this.title,
-    required this.amount,
+    required this.description,
     required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 10,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
 
       decoration: BoxDecoration(
-        color:
-            Colors.white.withOpacity(0.75),
+        // Updated Flutter API:
+        // withOpacity() is deprecated.
+        color: Colors.white.withValues(alpha: 0.75),
 
-        borderRadius:
-            BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12),
       ),
 
       child: Row(
         children: [
+          Container(
+            width: 38,
+            height: 38,
 
-          Icon(
-            icon,
+            decoration: BoxDecoration(
+              color: const Color(0xFFE8DDF7),
+              borderRadius: BorderRadius.circular(10),
+            ),
 
-            size: 20,
-
-            color:
-                const Color(0xFF7252B5),
+            child: Icon(icon, size: 20, color: const Color(0xFF7252B5)),
           ),
 
           const SizedBox(width: 10),
 
           Expanded(
-            child: Text(
-              title,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
 
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight:
-                    FontWeight.w500,
-              ),
-            ),
-          ),
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
 
-          Text(
-            amount,
+                const SizedBox(height: 2),
 
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight:
-                  FontWeight.bold,
-              color:
-                  Color(0xFF7252B5),
+                Text(
+                  description,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF666666),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -499,36 +460,21 @@ class _BudgetRow extends StatelessWidget {
 class _BulletPoint extends StatelessWidget {
   final String text;
 
-  const _BulletPoint({
-    required this.text,
-  });
+  const _BulletPoint({required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.only(
-        bottom: 8,
-      ),
+      padding: const EdgeInsets.only(bottom: 8),
 
       child: Row(
-        crossAxisAlignment:
-            CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-
           const Padding(
-            padding:
-                EdgeInsets.only(top: 6),
+            padding: EdgeInsets.only(top: 6),
 
-            child: Icon(
-              Icons.circle,
-
-              size: 7,
-
-              color:
-                  Color(0xFF7252B5),
-            ),
+            child: Icon(Icons.circle, size: 7, color: Color(0xFF7252B5)),
           ),
 
           const SizedBox(width: 10),
@@ -536,12 +482,10 @@ class _BulletPoint extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-
               style: const TextStyle(
                 fontSize: 15,
                 height: 1.4,
-                color:
-                    Color(0xFF555555),
+                color: Color(0xFF555555),
               ),
             ),
           ),
