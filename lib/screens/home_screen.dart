@@ -6,6 +6,20 @@ import '../widgets/app_header.dart';
 import 'level_modules_screen.dart';
 
 // ============================================================
+// PASTEL THEME
+// ============================================================
+
+const Color pastelBlue = Color(0xFFAFCFE8);
+const Color pastelGreen = Color(0xFFAFD582);
+const Color pastelLavender = Color(0xFFC9BBEE);
+const Color pastelPink = Color(0xFFFDBCC3);
+const Color pastelRed = Color(0xFFF4A6A6);
+const Color pastelYellow = Color(0xFFF6E39A);
+const Color warmWhite = Color(0xFFFFF9F0);
+const Color goldenGrey = Color(0xFFD9D2A8);
+const Color darkText = Color(0xFF111111);
+
+// ============================================================
 // HOME SCREEN — 11 LEVEL LEARNING PATH
 //
 // Level 1 & Level 2 are currently unlocked.
@@ -21,61 +35,74 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F8FC),
+      // ==========================================================
+      // PASTEL BLUE BACKGROUND
+      // ==========================================================
+      backgroundColor: pastelBlue,
 
       appBar: const AppHeader(),
 
       body: Consumer<GameState>(
         builder: (context, gameState, _) {
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+          return CustomPaint(
+            painter: _DotPatternPainter(),
 
-            padding: const EdgeInsets.fromLTRB(24, 20, 24, 40),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
 
-            child: Column(
-              children: [
-                // ==================================================
-                // XP / STREAK SUMMARY
-                // ==================================================
-                _SummaryCard(gameState: gameState),
+              padding: const EdgeInsets.fromLTRB(14, 20, 14, 40),
 
-                const SizedBox(height: 32),
+              child: Column(
+                children: [
+                  // ==================================================
+                  // XP / STREAK SUMMARY
+                  // ==================================================
+                  _SummaryCard(gameState: gameState),
 
-                // ==================================================
-                // LEARNING PATH TITLE
-                // ==================================================
-                const Align(
-                  alignment: Alignment.centerLeft,
+                  const SizedBox(height: 30),
 
-                  child: Text(
-                    'Learning Path',
+                  // ==================================================
+                  // LEARNING PATH TITLE
+                  // ==================================================
+                  const Align(
+                    alignment: Alignment.centerLeft,
 
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF202020),
+                    child: Text(
+                      'Learning Path',
+
+                      style: TextStyle(
+                        fontSize: 31.6,
+                        fontWeight: FontWeight.w900,
+                        color: darkText,
+                        letterSpacing: -0.5,
+                      ),
                     ),
                   ),
-                ),
 
-                const SizedBox(height: 6),
+                  const SizedBox(height: 6),
 
-                const Align(
-                  alignment: Alignment.centerLeft,
+                  const Align(
+                    alignment: Alignment.centerLeft,
 
-                  child: Text(
-                    'Build your financial knowledge step by step',
-                    style: TextStyle(fontSize: 14, color: Color(0xFF777777)),
+                    child: Text(
+                      'Build your financial knowledge step by step',
+
+                      style: TextStyle(
+                        fontSize: 14.5,
+                        fontWeight: FontWeight.w600,
+                        color: darkText,
+                      ),
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 22),
+                  const SizedBox(height: 22),
 
-                // ==================================================
-                // LEVEL MAP
-                // ==================================================
-                _buildLevelMap(context, gameState),
-              ],
+                  // ==================================================
+                  // LEVEL MAP
+                  // ==================================================
+                  _buildLevelMap(context, gameState),
+                ],
+              ),
             ),
           );
         },
@@ -106,8 +133,8 @@ class HomeScreen extends StatelessWidget {
 
         totalModules: 10,
 
-        color: const Color(0xFF7252B5),
-        lightColor: const Color(0xFFE8DDF7),
+        color: pastelGreen,
+        lightColor: const Color(0xFFE8F3D7),
       ),
 
       // ========================================================
@@ -127,8 +154,8 @@ class HomeScreen extends StatelessWidget {
 
         totalModules: 10,
 
-        color: const Color(0xFF2E7D32),
-        lightColor: const Color(0xFFE8F6E9),
+        color: pastelLavender,
+        lightColor: const Color(0xFFE9E3F8),
       ),
 
       // ========================================================
@@ -143,8 +170,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-3',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF1976D2),
-        lightColor: const Color(0xFFE3F2FD),
+
+        color: pastelYellow,
+        lightColor: const Color(0xFFFFF4C9),
       ),
 
       // ========================================================
@@ -159,8 +187,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-4',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFFE65100),
-        lightColor: const Color(0xFFFFF3E0),
+
+        color: pastelRed,
+        lightColor: const Color(0xFFF9DADA),
       ),
 
       // ========================================================
@@ -175,8 +204,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-5',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFFC62828),
-        lightColor: const Color(0xFFFFEBEE),
+
+        color: pastelPink,
+        lightColor: const Color(0xFFFCE5E8),
       ),
 
       // ========================================================
@@ -191,8 +221,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-6',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF00838F),
-        lightColor: const Color(0xFFE0F7FA),
+
+        color: pastelGreen,
+        lightColor: const Color(0xFFE8F3D7),
       ),
 
       // ========================================================
@@ -207,8 +238,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-7',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF6A1B9A),
-        lightColor: const Color(0xFFF3E5F5),
+
+        color: pastelLavender,
+        lightColor: const Color(0xFFE9E3F8),
       ),
 
       // ========================================================
@@ -223,8 +255,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-8',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF1565C0),
-        lightColor: const Color(0xFFE3F2FD),
+
+        color: pastelYellow,
+        lightColor: const Color(0xFFFFF4C9),
       ),
 
       // ========================================================
@@ -239,8 +272,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-9',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF4527A0),
-        lightColor: const Color(0xFFEDE7F6),
+
+        color: pastelRed,
+        lightColor: const Color(0xFFF9DADA),
       ),
 
       // ========================================================
@@ -255,8 +289,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-10',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF37474F),
-        lightColor: const Color(0xFFECEFF1),
+
+        color: pastelPink,
+        lightColor: const Color(0xFFFCE5E8),
       ),
 
       // ========================================================
@@ -271,8 +306,9 @@ class HomeScreen extends StatelessWidget {
         levelId: 'level-11',
         completedModules: 0,
         totalModules: 10,
-        color: const Color(0xFF00695C),
-        lightColor: const Color(0xFFE0F2F1),
+
+        color: pastelGreen,
+        lightColor: const Color(0xFFE8F3D7),
       ),
     ];
 
@@ -296,7 +332,7 @@ class HomeScreen extends StatelessWidget {
                   : Alignment.centerLeft,
 
               child: FractionallySizedBox(
-                widthFactor: 0.86,
+                widthFactor: 0.94,
 
                 child: _LevelNode(
                   level: level,
@@ -328,9 +364,7 @@ class HomeScreen extends StatelessWidget {
               _WindingConnector(
                 goRight: alignRight,
 
-                color: level.unlocked
-                    ? level.color.withValues(alpha: 0.35)
-                    : Colors.grey.withValues(alpha: 0.2),
+                color: darkText.withValues(alpha: level.unlocked ? 0.45 : 0.18),
               ),
           ],
         );
@@ -369,21 +403,14 @@ class _SummaryCard extends StatelessWidget {
       padding: const EdgeInsets.all(22),
 
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF7252B5), Color(0xFF9675D1)],
+        color: pastelLavender,
 
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        borderRadius: BorderRadius.circular(22),
 
-        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: darkText, width: 2),
 
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF7252B5).withValues(alpha: 0.35),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
+        boxShadow: const [
+          BoxShadow(color: darkText, offset: Offset(4, 4), blurRadius: 0),
         ],
       ),
 
@@ -398,13 +425,13 @@ class _SummaryCard extends StatelessWidget {
             'Your Progress',
 
             style: TextStyle(
-              color: Colors.white70,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
+              color: darkText,
+              fontSize: 20.2,
+              fontWeight: FontWeight.w900,
             ),
           ),
 
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
 
           // ======================================================
           // STATS
@@ -415,19 +442,26 @@ class _SummaryCard extends StatelessWidget {
                 emoji: '🪙',
                 value: '${gameState.totalXP}',
                 label: 'XP',
+                color: pastelYellow,
               ),
 
-              const SizedBox(width: 20),
+              const SizedBox(width: 12),
 
               _MiniStat(
                 emoji: '🔥',
                 value: '${gameState.currentStreak}',
                 label: 'Streak',
+                color: pastelRed,
               ),
 
-              const SizedBox(width: 20),
+              const SizedBox(width: 12),
 
-              _MiniStat(emoji: '✅', value: '$totalDone', label: 'Modules'),
+              _MiniStat(
+                emoji: '✅',
+                value: '$totalDone',
+                label: 'Modules',
+                color: pastelGreen,
+              ),
             ],
           ),
 
@@ -436,26 +470,40 @@ class _SummaryCard extends StatelessWidget {
           // ======================================================
           // OVERALL PROGRESS
           // ======================================================
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
+          Container(
+            height: 12,
 
-            child: LinearProgressIndicator(
-              value: progress,
+            decoration: BoxDecoration(
+              color: warmWhite,
 
-              minHeight: 8,
+              borderRadius: BorderRadius.circular(20),
 
-              backgroundColor: Colors.white24,
+              border: Border.all(color: darkText, width: 1.5),
+            ),
 
-              valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+
+              child: LinearProgressIndicator(
+                value: progress,
+
+                backgroundColor: Colors.transparent,
+
+                valueColor: const AlwaysStoppedAnimation<Color>(pastelGreen),
+              ),
             ),
           ),
 
-          const SizedBox(height: 7),
+          const SizedBox(height: 8),
 
           Text(
             '$totalDone of $totalModules modules completed',
 
-            style: const TextStyle(color: Colors.white70, fontSize: 12),
+            style: const TextStyle(
+              color: darkText,
+              fontSize: 16.4,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),
@@ -471,50 +519,68 @@ class _MiniStat extends StatelessWidget {
   final String emoji;
   final String value;
   final String label;
+  final Color color;
 
   const _MiniStat({
     required this.emoji,
     required this.value,
     required this.label,
+    required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 10),
 
-        children: [
-          Row(
-            children: [
-              Text(emoji, style: const TextStyle(fontSize: 18)),
+        decoration: BoxDecoration(
+          color: color,
 
-              const SizedBox(width: 6),
+          borderRadius: BorderRadius.circular(14),
 
-              Flexible(
-                child: Text(
-                  value,
+          border: Border.all(color: darkText, width: 1.5),
+        ),
 
-                  overflow: TextOverflow.ellipsis,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
 
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+          children: [
+            Row(
+              children: [
+                Text(emoji, style: const TextStyle(fontSize: 22.8)),
+
+                const SizedBox(width: 5),
+
+                Flexible(
+                  child: Text(
+                    value,
+
+                    overflow: TextOverflow.ellipsis,
+
+                    style: const TextStyle(
+                      fontSize: 26.6,
+                      fontWeight: FontWeight.w900,
+                      color: darkText,
+                    ),
                   ),
                 ),
+              ],
+            ),
+
+            const SizedBox(height: 2),
+
+            Text(
+              label,
+
+              style: TextStyle(
+                color: darkText.withValues(alpha: 0.65),
+                fontSize: 13.9,
+                fontWeight: FontWeight.w800,
               ),
-            ],
-          ),
-
-          const SizedBox(height: 2),
-
-          Text(
-            label,
-
-            style: const TextStyle(color: Colors.white60, fontSize: 12),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -575,30 +641,18 @@ class _LevelNode extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
 
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.all(20),
 
           decoration: BoxDecoration(
-            color: level.unlocked ? Colors.white : const Color(0xFFF5F5F5),
+            color: level.unlocked ? level.color : const Color(0xFFE8E5DE),
 
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(20),
 
-            border: Border.all(
-              color: level.unlocked
-                  ? level.color.withValues(alpha: 0.35)
-                  : const Color(0xFFE0E0E0),
+            border: Border.all(color: darkText, width: 2),
 
-              width: 1.5,
-            ),
-
-            boxShadow: level.unlocked
-                ? [
-                    BoxShadow(
-                      color: level.color.withValues(alpha: 0.10),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
-                    ),
-                  ]
-                : [],
+            boxShadow: const [
+              BoxShadow(color: darkText, offset: Offset(4, 4), blurRadius: 0),
+            ],
           ),
 
           child: Column(
@@ -609,20 +663,22 @@ class _LevelNode extends StatelessWidget {
               // LEVEL HEADER
               // ==================================================
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   // =================================================
-                  // LEVEL BADGE
+                  // LEVEL ICON
                   // =================================================
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 56,
+                    height: 56,
 
                     decoration: BoxDecoration(
-                      color: level.unlocked
-                          ? level.lightColor
-                          : const Color(0xFFEEEEEE),
+                      color: warmWhite,
 
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(15),
+
+                      border: Border.all(color: darkText, width: 2),
                     ),
 
                     child: Center(
@@ -630,17 +686,17 @@ class _LevelNode extends StatelessWidget {
                           ? Text(
                               level.emoji,
 
-                              style: const TextStyle(fontSize: 24),
+                              style: const TextStyle(fontSize: 36.7),
                             )
                           : const Icon(
                               Icons.lock,
-                              color: Colors.grey,
-                              size: 22,
+                              color: Color(0xFF777777),
+                              size: 26.4,
                             ),
                     ),
                   ),
 
-                  const SizedBox(width: 14),
+                  const SizedBox(width: 16),
 
                   // =================================================
                   // LEVEL INFORMATION
@@ -650,44 +706,71 @@ class _LevelNode extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
 
                       children: [
-                        Text(
-                          'Level ${level.number}',
+                        // =========================================
+                        // LEVEL LABEL
+                        // =========================================
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 9,
+                            vertical: 4,
+                          ),
 
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: level.unlocked ? level.color : Colors.grey,
+                          decoration: BoxDecoration(
+                            color: warmWhite,
+
+                            borderRadius: BorderRadius.circular(7),
+
+                            border: Border.all(color: darkText, width: 1.2),
+                          ),
+
+                          child: Text(
+                            'LEVEL ${level.number}',
+
+                            style: const TextStyle(
+                              fontSize: 13.9,
+                              fontWeight: FontWeight.w900,
+                              color: darkText,
+                              letterSpacing: 0.7,
+                            ),
                           ),
                         ),
 
-                        const SizedBox(height: 2),
+                        const SizedBox(height: 6),
 
+                        // =========================================
+                        // TITLE
+                        // =========================================
                         Text(
                           level.title,
 
-                          maxLines: 2,
+                          maxLines: 3,
                           overflow: TextOverflow.ellipsis,
 
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.w900,
                             color: level.unlocked
-                                ? const Color(0xFF202020)
-                                : Colors.grey,
+                                ? darkText
+                                : Colors.grey.shade600,
+                            letterSpacing: -0.2,
                           ),
                         ),
 
                         const SizedBox(height: 3),
 
+                        // =========================================
+                        // SUBTITLE
+                        // =========================================
                         Text(
                           level.subtitle,
 
-                          maxLines: 2,
+                          maxLines: 3,
                           overflow: TextOverflow.ellipsis,
 
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w600,
+                            color: darkText.withValues(alpha: 0.70),
                           ),
                         ),
                       ],
@@ -700,11 +783,28 @@ class _LevelNode extends StatelessWidget {
                   // ARROW / LOCK
                   // =================================================
                   if (level.unlocked)
-                    Icon(Icons.arrow_forward_ios, size: 15, color: level.color)
+                    Container(
+                      width: 42,
+                      height: 42,
+
+                      decoration: BoxDecoration(
+                        color: warmWhite,
+
+                        borderRadius: BorderRadius.circular(12),
+
+                        border: Border.all(color: darkText, width: 1.5),
+                      ),
+
+                      child: const Icon(
+                        Icons.arrow_forward,
+                        size: 23.1,
+                        color: darkText,
+                      ),
+                    )
                   else
                     const Icon(
                       Icons.lock_outline,
-                      size: 18,
+                      size: 23.1,
                       color: Colors.grey,
                     ),
                 ],
@@ -714,7 +814,7 @@ class _LevelNode extends StatelessWidget {
               // UNLOCKED PROGRESS
               // ==================================================
               if (level.unlocked) ...[
-                const SizedBox(height: 14),
+                const SizedBox(height: 17),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -723,38 +823,68 @@ class _LevelNode extends StatelessWidget {
                     Text(
                       '${level.completedModules}/${level.totalModules} modules',
 
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: level.color,
-                        fontWeight: FontWeight.w500,
+                      style: const TextStyle(
+                        fontSize: 16.4,
+                        fontWeight: FontWeight.w800,
+                        color: darkText,
                       ),
                     ),
 
-                    Text(
-                      '${(progress * 100).round()}%',
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
 
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: level.color,
+                      decoration: BoxDecoration(
+                        color: warmWhite,
+
+                        borderRadius: BorderRadius.circular(7),
+
+                        border: Border.all(color: darkText, width: 1),
+                      ),
+
+                      child: Text(
+                        '${(progress * 100).round()}%',
+
+                        style: const TextStyle(
+                          fontSize: 13.9,
+                          fontWeight: FontWeight.w900,
+                          color: darkText,
+                        ),
                       ),
                     ),
                   ],
                 ),
 
-                const SizedBox(height: 6),
+                const SizedBox(height: 8),
 
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
+                // ===============================================
+                // LEVEL PROGRESS BAR
+                // ===============================================
+                Container(
+                  height: 10,
 
-                  child: LinearProgressIndicator(
-                    value: progress,
+                  decoration: BoxDecoration(
+                    color: warmWhite,
 
-                    minHeight: 6,
+                    borderRadius: BorderRadius.circular(20),
 
-                    backgroundColor: level.lightColor,
+                    border: Border.all(color: darkText, width: 1.2),
+                  ),
 
-                    valueColor: AlwaysStoppedAnimation<Color>(level.color),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+
+                    child: LinearProgressIndicator(
+                      value: progress,
+
+                      backgroundColor: Colors.transparent,
+
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        level.lightColor,
+                      ),
+                    ),
                   ),
                 ),
               ]
@@ -762,12 +892,16 @@ class _LevelNode extends StatelessWidget {
               // LOCKED LEVEL MESSAGE
               // ==================================================
               else ...[
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
 
                 Text(
                   'Complete previous levels to unlock',
 
-                  style: TextStyle(fontSize: 11, color: Colors.grey.shade500),
+                  style: TextStyle(
+                    fontSize: 15.2,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey.shade600,
+                  ),
                 ),
               ],
             ],
@@ -794,7 +928,7 @@ class _WindingConnector extends StatelessWidget {
       height: 44,
 
       child: CustomPaint(
-        size: Size(MediaQuery.of(context).size.width - 48, 44),
+        size: Size(MediaQuery.of(context).size.width - 28, 44),
 
         painter: _ConnectorPainter(goRight: goRight, color: color),
       ),
@@ -827,14 +961,16 @@ class _ConnectorPainter extends CustomPainter {
       // RIGHT → LEFT
       // ======================================================
 
-      path.moveTo(size.width * 0.82, 0);
+      path.moveTo(size.width * 0.88, 0);
 
       path.cubicTo(
-        size.width * 0.82,
+        size.width * 0.88,
         size.height * 0.5,
-        size.width * 0.18,
+
+        size.width * 0.12,
         size.height * 0.5,
-        size.width * 0.18,
+
+        size.width * 0.12,
         size.height,
       );
     } else {
@@ -842,14 +978,16 @@ class _ConnectorPainter extends CustomPainter {
       // LEFT → RIGHT
       // ======================================================
 
-      path.moveTo(size.width * 0.18, 0);
+      path.moveTo(size.width * 0.12, 0);
 
       path.cubicTo(
-        size.width * 0.18,
+        size.width * 0.12,
         size.height * 0.5,
-        size.width * 0.82,
+
+        size.width * 0.88,
         size.height * 0.5,
-        size.width * 0.82,
+
+        size.width * 0.88,
         size.height,
       );
     }
@@ -860,5 +998,32 @@ class _ConnectorPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant _ConnectorPainter old) {
     return old.goRight != goRight || old.color != color;
+  }
+}
+
+// ============================================================
+// BACKGROUND DOT PATTERN
+// ============================================================
+
+class _DotPatternPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = darkText.withValues(alpha: 0.10)
+      ..style = PaintingStyle.fill;
+
+    const double spacing = 24;
+    const double radius = 1.5;
+
+    for (double x = spacing / 2; x < size.width; x += spacing) {
+      for (double y = spacing / 2; y < size.height; y += spacing) {
+        canvas.drawCircle(Offset(x, y), radius, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _DotPatternPainter oldDelegate) {
+    return false;
   }
 }
